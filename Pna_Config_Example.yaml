@@ -1,0 +1,45 @@
+ConfigInit: #None/null always gets the current paramter from the vna instead of reseting it 
+  #can be used to set the out location of the data, is also often used as the title in plots
+  out_folder: Pna_Config_Example
+  ##sets the  Phase electrical delay, #auto # sets the electctrical delay automaticly according to marker function, Otherwise give labrad value in time units 
+  ElecDelay: null #!!python/object/apply:labrad.units.WithUnit ## 
+ # -
+ # - 
+ #sets the type of data sweep currently supports: CW and  LIN(for linear) 
+  Sweep: null 
+ #center frequencey in Linear sweep and the CW frequencey as well
+  FreqCen: null # !!python/object/apply:labrad.units.WithUnit
+  #- 7.0
+  #- GHz
+  #sets the frequencey span centerd around freqCen
+  FreqSpan: null #!!python/object/apply:labrad.units.WithUnit
+  #- 2.0
+  #- MHz
+  # The data  format which is meauserd, supports: MLIN MLOGc PHAS UPHase 'Unwrapped phase' IMAGinary REAL POLar
+        #SMIT SADMittance 'Smith Admittance' SWR GDELay 'Group Delay' KELVin
+        #FAHRenheit CELSius 
+        #currently  only the MLOG PHAS, REAL and IMAG were tested within our code 
+  DatFrm: null # PHAS
+ ## Power of signal n the output channel
+  Pwr: null # !!python/object/apply:labrad.units.WithUnit
+  #- 5.0
+  #- dBm
+ ## IF Bandwidth
+  BanWid: null #!!python/object/apply:labrad.units.WithUnit
+  #- 1.0
+  #- kHz
+   #port from which signal is sent in the Vna
+  out_port: null # 1
+  #port to which the signal returns and is mesured 
+  in_port: null #2    
+
+  ### number of points that are evaluated at each sweep, the code automaticly correctes it to an uneven number to ensure that the middle of x span is evaluated
+  NumOfPt: null # 3001 
+# a number in deg by which to change the phase offset (by a constant)
+  PhConst: null #!!python/object/apply:labrad.units.WithUnit    
+  #- 
+  #-deg
+AddConfig:
+    #Addtional paramters that can be add on need for additonal tests/meserments ## must always be in a an array/list
+  ExtraDataFrm: [REAL,IMAG]
+  
